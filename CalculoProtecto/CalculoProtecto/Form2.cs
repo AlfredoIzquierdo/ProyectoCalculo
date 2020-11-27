@@ -52,26 +52,27 @@ namespace CalculoProtecto
         {
             double[] ABC= new double[3];
             string patronA = @"([\ \-\+]+|^)\d*x\^2"; // patron para evaluar si hay un termino numerico junto a el termino cuadratico
-                Regex elementoA = new Regex(patronA);           
-                string guardarA = elementoA.Match(ecuacion).Value;
-            guardarA = guardarA.Substring(0, guardarA.Length-1);
-                ABC[0] = SacarSignos(sacarNumeros.Match(guardarA).Value);
+            Regex elementoA = new Regex(patronA);           
+            string guardarA = elementoA.Match(ecuacion).Value;
+            ABC[0] = SacarSignos(guardarA);
+            guardarA = sacarNumeros.Match(guardarA).Value;
             ABC[0] *= Double.Parse(guardarA != "" ? guardarA : "1");
-                
 
 
+            string patronC = @"([\-\+]+|^)\d+([^a-zA-Z0-9]|$)"; // Patron para evaluar el contenido de B y C
+            Regex elementoC = new Regex(patronC);
+            string guardarC = elementoC.Match(ecuacion).Value;
+            ABC[2] = SacarSignos(elementoC.Match(ecuacion).Value);
+            guardarC = sacarNumeros.Match(guardarC).Value;
+            ABC[2] *= Double.Parse(sacarNumeros.Match(guardarC).Value);
 
-                string patronC = @"([\-\+]+|^)\d+([^a-zA-Z0-9]|$)"; // Patron para evaluar el contenido de B y C
-                Regex elementoC = new Regex(patronC);
-            ABC[1] = SacarSignos(elementoC.Match(ecuacion).Value);
-            ABC[1] *= Double.Parse(sacarNumeros.Match(ecuacion).Value);
 
-
-                string patronB = @"([\ \-\+]+|^)+\d*x([^\^]|$)"; // Patron para evaluar el contenido de B y de C
-                Regex elementoB = new Regex(patronB);               
-                string guardarB = sacarNumeros.Match(ecuacion).Value;
-            ABC[2] = SacarSignos(ecuacion);
-            ABC[2] *= Double.Parse(guardarB != "" ? guardarB : "1");
+            string patronB = @"([\ \-\+]+|^)+\d*x([^\^]|$)"; // Patron para evaluar el contenido de B y de C
+            Regex elementoB = new Regex(patronB);               
+            string guardarB = elementoB.Match(ecuacion).Value;
+            ABC[1] = SacarSignos(ecuacion);
+            guardarB = sacarNumeros.Match(guardarB).Value;
+            ABC[1] *= Double.Parse(guardarB != "" ? guardarB : "1");
             return ABC;
         }
         Regex sacarNumeros = new Regex(@"[0-9]+");

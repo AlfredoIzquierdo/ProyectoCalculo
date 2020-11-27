@@ -13,6 +13,7 @@ namespace CalculoProtecto
 {
     public partial class Form2 : Form
     {
+        
         double contenidoA, contenidoB, contenidoC;
         public Form2()
         {
@@ -39,20 +40,22 @@ namespace CalculoProtecto
 
         private double[] ResolverEcuacion(string ecuacion)
         {
+            
             double x1 = 0;
             double x2 = 0;
-
+            
             
             return null;
         }
 
         private double[] EncontrarABC(string ecuacion)
         {
-            double[] ABC= new double[2];
+            double[] ABC= new double[3];
             string patronA = @"([\ \-\+]+|^)\d*x\^2"; // patron para evaluar si hay un termino numerico junto a el termino cuadratico
                 Regex elementoA = new Regex(patronA);           
-                string guardarA = sacarNumeros.Match(ecuacion).Value;
-                ABC[0] = SacarSignos(ecuacion);
+                string guardarA = elementoA.Match(ecuacion).Value;
+            guardarA = guardarA.Substring(0, guardarA.Length-1);
+                ABC[0] = SacarSignos(sacarNumeros.Match(guardarA).Value);
             ABC[0] *= Double.Parse(guardarA != "" ? guardarA : "1");
                 
 
@@ -60,7 +63,7 @@ namespace CalculoProtecto
 
                 string patronC = @"([\-\+]+|^)\d+([^a-zA-Z0-9]|$)"; // Patron para evaluar el contenido de B y C
                 Regex elementoC = new Regex(patronC);
-            ABC[1] = SacarSignos(ecuacion);
+            ABC[1] = SacarSignos(elementoC.Match(ecuacion).Value);
             ABC[1] *= Double.Parse(sacarNumeros.Match(ecuacion).Value);
 
 
@@ -69,10 +72,25 @@ namespace CalculoProtecto
                 string guardarB = sacarNumeros.Match(ecuacion).Value;
             ABC[2] = SacarSignos(ecuacion);
             ABC[2] *= Double.Parse(guardarB != "" ? guardarB : "1");
-            return null;
+            return ABC;
         }
         Regex sacarNumeros = new Regex(@"[0-9]+");
         Regex _sacarSignos = new Regex(@"[\+\-\ ]+[\da-z]");
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label5.Text = "La ecuacion del volumen es:"+ funcionVolumen(Double.Parse(textBox1.Text),Double.Parse(textBox2.Text));
+            label6.Text = "La derivada de la ecuacion es" + derivadaVolumen(Double.Parse(textBox1.Text),Double.Parse(textBox2.Text));
+            double[] X = EncontrarABC(derivadaVolumen(Double.Parse(textBox1.Text), Double.Parse(textBox2.Text)));
+            label7.Text = "A: " + X[0]+ " B: "+X[1]+" C: "+ X[2];
+        }
+
+        
         private int SacarSignos(string valor)
         {
             string signos = _sacarSignos.Match(valor).Value;

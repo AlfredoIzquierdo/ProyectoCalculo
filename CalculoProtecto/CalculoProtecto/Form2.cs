@@ -38,14 +38,17 @@ namespace CalculoProtecto
             return "12x^2-" + ((ancho + alto) * 4) + "x+" + (ancho * alto);
         }
 
-        private double[] ResolverEcuacion(string ecuacion)
+        private double[] FormulaGeneral(double a, double b, double c)
         {
-            
             double x1 = 0;
             double x2 = 0;
+            double delta = Math.Pow(b, 2) - 4 * a * c;
+
+            x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+            x2 = (-b + Math.Sqrt(delta)) / (2 * a);
             
             
-            return null;
+            return new double[2] {x1,x2};
         }
 
         private double[] EncontrarABC(string ecuacion)
@@ -83,13 +86,21 @@ namespace CalculoProtecto
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        
+
+        private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            label5.Text = "La ecuacion del volumen es:"+ funcionVolumen(Double.Parse(textBox1.Text),Double.Parse(textBox2.Text));
-            label6.Text = "La derivada de la ecuacion es" + derivadaVolumen(Double.Parse(textBox1.Text),Double.Parse(textBox2.Text));
-            double[] X = EncontrarABC(derivadaVolumen(Double.Parse(textBox1.Text), Double.Parse(textBox2.Text)));
-            label7.Text = "A: " + X[0]+ " B: "+X[1]+" C: "+ X[2];
+
+            label5.Text = "La ecuacion del volumen es:" + funcionVolumen((double)numericUpDown1.Value, (double)numericUpDown2.Value);
+            label6.Text = "La derivada de la ecuacion es" + derivadaVolumen((double)numericUpDown1.Value, (double)numericUpDown2.Value);
+            double[] X = EncontrarABC(derivadaVolumen((double)numericUpDown1.Value, (double)numericUpDown2.Value));
+            label7.Text = "A: " + X[0] + " B: " + X[1] + " C: " + X[2];
+            double[] valores = FormulaGeneral(X[0], X[1], X[2]);
+            label8.Text = "x1: " + valores[0] + " x2: " + valores[1];
+            label9.Text = "El resultado es:" + ((valores[0] > 0 && valores[0] < (double)numericUpDown1.Value / 2 && valores[0] < (double)numericUpDown2.Value / 2) ? valores[0] : valores[1]);
         }
+
+        
 
         
         private int SacarSignos(string valor)

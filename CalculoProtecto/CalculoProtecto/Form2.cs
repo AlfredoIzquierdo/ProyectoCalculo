@@ -98,6 +98,7 @@ namespace CalculoProtecto
             double[] valores = FormulaGeneral(X[0], X[1], X[2]);
             label8.Text = "x1: " + valores[0] + " x2: " + valores[1];
             label9.Text = "El resultado es:" + ((valores[0] > 0 && valores[0] < (double)numericUpDown1.Value / 2 && valores[0] < (double)numericUpDown2.Value / 2) ? valores[0] : valores[1]);
+            cajita1.RecargarCajita((double)numericUpDown1.Value, (double)numericUpDown2.Value);
         }
 
         

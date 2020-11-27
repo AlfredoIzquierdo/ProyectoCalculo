@@ -1,0 +1,12 @@
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\bin\Debug\CalculoProtecto.exe.config
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\bin\Debug\CalculoProtecto.exe
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\bin\Debug\CalculoProtecto.pdb
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.csprojAssemblyReference.cache
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.Form1.resources
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.Form2.resources
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.Form3.resources
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.Properties.Resources.resources
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.csproj.GenerateResource.cache
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.csproj.CoreCompileInputs.cache
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.exe
+C:\Users\CYBERTRON\Desktop\ProyectoCalculo\CalculoProtecto\CalculoProtecto\obj\Debug\CalculoProtecto.pdb
